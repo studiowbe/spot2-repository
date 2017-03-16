@@ -19,10 +19,6 @@ class Mapper extends SpotMapper
 
     public function queryBuilder()
     {
-        $query = new $this->_queryClass($this, $this->transformer);
-
-        return $query;
+        return new $this->_queryClass($this, $this->transformer);
     }
-
-
 }
