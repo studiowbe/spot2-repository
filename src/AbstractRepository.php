@@ -4,9 +4,10 @@
 namespace Studiow\Spot\Repository;
 
 
+use Spot\Locator;
 use Spot\MapperInterface;
 
-class AbstractRepository implements RepositoryInterface
+abstract class AbstractRepository implements RepositoryInterface
 {
     /**
      * @var MapperInterface
@@ -16,12 +17,15 @@ class AbstractRepository implements RepositoryInterface
     /**
      * @var TransformerInterface
      */
-    protected $convertor;
+    protected $transformer;
 
-    public function __construct(MapperInterface $mapper, TransformerInterface $convertor)
+    public function __construct(Locator $locator, string $entityName, TransformerInterface $transformer)
     {
-        $this->mapper = $mapper;
-        $this->convertor = $convertor;
+        $this->mapper = new Mapper(
+            $locator, $entityName, $transformer
+        );
+
+        $this->transformer = $transformer;
     }
 
     public function getMapper(): MapperInterface
@@ -29,9 +33,9 @@ class AbstractRepository implements RepositoryInterface
         return $this->mapper;
     }
 
-    public function getConvertor(): TransformerInterface
+    public function getTransformer(): TransformerInterface
     {
-        return $this->convertor;
+        return $this->transformer;
     }
 
 }

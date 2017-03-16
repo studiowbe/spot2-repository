@@ -4,6 +4,7 @@
 namespace Studiow\Spot\Repository;
 
 
+use Spot\Entity\Collection;
 use Spot\Query;
 use Iterator;
 
@@ -22,10 +23,10 @@ class QueryCollector implements Iterator
      */
     private $iterator;
 
-    public function __construct(Query $query, TransformerInterface $transformer)
+    public function __construct(Collection $iterator, TransformerInterface $transformer)
     {
-        $this->query = $query;
-        $this->iterator = $query->getIterator();
+
+        $this->iterator = $iterator;
         $this->transformer = $transformer;
     }
 
