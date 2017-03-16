@@ -1,0 +1,12 @@
+{
+  "name": "studiow/spot2-repository",
+  "autoload": {
+    "psr-4": {
+      "Studiow\\Spot\\Repository\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=7.0.0",
+    "vlucas/spot2": "^2.2"
+  }
+}
