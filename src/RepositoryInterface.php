@@ -10,6 +10,5 @@ interface RepositoryInterface
 {
     public function getMapper():MapperInterface;
 
-
     public function getConvertor():TransformerInterface;
 }
